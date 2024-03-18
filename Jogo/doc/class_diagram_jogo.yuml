@@ -1,0 +1,12 @@
+// {type:class}
+// {generate:true}
+// {direction:topDown}
+
+[note: Class diagram to game{bg:cornsilk}]
+
+[≪Abstract≫;Personagem|-id:int;-dano:int;-nome:string;-vida:int;-nivel:int;MAX_VIDA:static int|atacar(Personagem: personagem);defender(Personagem: personagem)]->[Heroi|-coletavel:Coletavel|coletar(Coletavel c);habilidadeEspecial();atacar(Personagem: personagem);defender(Personagem: personagem)]
+
+[≪Abstract≫;Personagem|-id:int;-dano:int;-nome:string;-vida:int;-nivel:int;MAX_VIDA:static int|atacar(Personagem: personagem);defender(Personagem: personagem)]->[Monstro| | calcularDano(personagem: Personagem);atacar(Personagem: personagem);defender(Personagem: personagem)]
+[≪Abstract≫;Item|-id:int;-String:nome|usar();descartar()]->[Arma|-dano:int; -uso:boolean| Usar()]
+[≪Abstract≫;Item|-id:int;-String:nome|usar();descartar()]->[Poção|-cura:static double;-uso:boolean;-coletado:boolean|usar();armazenar()]
+[<<Interface>>;Coletável| armazenar();usar()]->[≪Abstract≫;Item|-id:int;-String:nome|usar();descartar()]

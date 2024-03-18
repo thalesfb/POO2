@@ -1,0 +1,7 @@
+// {type:class}
+// {generate:true}
+// {direction:topDown}
+
+[note: Class diagram to Lista telefonica{bg:cornsilk}]
+
+[≪Interface>> Comparable<Pessoa>||comparTo(Pessoa: pessoa);toString()]->[Pessoa|-nome:String;-sobrenome:String;-data_nasc:LocalDate;-telefone:String]

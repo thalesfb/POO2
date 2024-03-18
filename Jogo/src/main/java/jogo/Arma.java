@@ -1,7 +1,5 @@
 package jogo;
-
 import java.util.Random;
-
 public class Arma extends Item{
 
     Random r = new Random();
@@ -30,8 +28,6 @@ public class Arma extends Item{
         this.uso = false;
     }
     
-
-
     public void usar(){
         this.setUso(true);
     }

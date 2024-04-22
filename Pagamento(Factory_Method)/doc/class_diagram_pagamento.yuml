@@ -1,0 +1,27 @@
+// {type:class}
+// {generate:true}
+// {direction:left-right}
+
+// Class diagram for the system of payment that accept forms of payment like card, billet, transfer, and pix using factory method pattern
+
+[note: Class diagram for the payment system using Factory Method pattern {bg:white}]
+
+[<<Interface>>;Payment||+pagar(valor:double):boolean]
+
+[<<Interface>>;Payment]<-[Card|-nome_titular:string;-numero_cartao:string;-data_validade:date;-cvv:string;-banco:string]
+
+[<<Interface>>;Payment]<-[BankSlip|-nome_beneficiario:string;-cpf:string;-data_vencimento:date;-codigo_barra:string]
+
+[<<Interface>>;Payment]<-[Transfer|-cpf_origem:string;-cpf_destino:string;-banco_origem:string;-banco_destino:string;-agencia_origem:string;-agencia_destino:string;-conta_origem:string;-conta_destino:string;-nome_origem:string;-nome_destino:string]
+
+[<<Interface>>;Payment]<-[PIX|-chave:string;-banco:string;-conta:string;-agencia:string;-nome:string]
+
+[<<Interface>>;Payment]^[<<Abstract>>;PaymentFactory|+processPayment(double:valor):Pagamento;+createPayment:void]
+
+[<<Abstract>>;PaymentFactory|+processPayment(double:valor):Pagamento]<-[CardFactory]
+
+[<<Abstract>>;PaymentFactory|+processPayment(double:valor):Pagamento]<-[BankSlipFactory]
+
+[<<Abstract>>;PaymentFactory|+processPayment(double:valor):Pagamento]<-[TransferFactory]
+
+[<<Abstract>>;PaymentFactory|+processPayment(double:valor):Pagamento]<-[PIXFactory]

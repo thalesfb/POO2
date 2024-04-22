@@ -1,5 +1,3 @@
 # POO2
 
-Disciplina de Programação Orientada a Objetos 2
-
-https://github.com/thalesfb/POO2
+Repositório voltado para a anotação de exemplos e execícios relacionados a disciplina de Programação Orientada a Objetos 2

@@ -1,11 +1,19 @@
 package ch.com.xingling;
 
 import interfaces.NotaFiscalXML;
+import java.io.File;
 
 public class FornecedorX implements NotaFiscalXML {
+  
+  private File xml;
+
+  public FornecedorX(String xml) {
+    this.xml = new File(xml);
+  }
+
   @Override
-  public void processarXML(String dados) {
+  public String lerXML() {
     // Simular envio de dados XML
-    System.out.println("Enviando dados XML do FornecedorX: \n" + dados);
+    return "Enviando conteúdo do XML do FornecedorX: \n";
   }
 }

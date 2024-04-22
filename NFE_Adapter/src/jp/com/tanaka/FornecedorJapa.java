@@ -1,11 +1,19 @@
 package jp.com.tanaka;
 
 import interfaces.NotaFiscalJSON;
+import java.io.File;
 
 public class FornecedorJapa implements NotaFiscalJSON {
+
+  private File json;
+
+  public FornecedorJapa(String json) {
+    this.json = new File(json);
+  }
+
   @Override
-  public void processarJSON(String dados) {
+  public String lerJSON() {
     // Simular envio de dados JSON
-    System.out.println("Enviando dados JSON de FornecedorJapa: \n" + dados);
+    return "Enviando dados JSON de FornecedorJapa: \n";
   }
 }

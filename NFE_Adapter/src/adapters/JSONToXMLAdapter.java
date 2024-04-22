@@ -14,12 +14,15 @@ public class JSONToXMLAdapter implements NotaFiscalXML {
   }
 
   @Override
-  public void processarXML(String dadosJson) {
+  public String lerXML() {
     // Aqui ocorreria a conversão de JSON para XML
     // String dadosXml = converteJSONparaXML(dadosJson);
     // Agora processa como XML
-    System.out.println("Processando JSON para XML");
-    json.processarJSON(dadosJson);
+    String conteudoJSON = json.lerJSON();
+    //processar e extrair dados do JSON e elaborar XML
+    String conteudoXML = "XML gerado a partir do JSON";
+    System.out.println("Convertendo JSON para XML");
+    return conteudoXML;
   }
 
   // private String converteJSONparaXML(String dadosJson) {

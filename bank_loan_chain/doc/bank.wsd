@@ -1,0 +1,49 @@
+@startuml bank-loan-approval
+
+interface Handler {
+    +setNext(handler : Handler) : Handler
+    +handle(request : Request) : boolean
+}
+
+class AbstractHandler {
+    -nextHandler : Handler
+    +setNext(handler : Handler) : Handler
+    +handle(request : Request) : boolean
+}
+
+class CreditAvailabilityHandler {
+    +handle(request : Request) : boolean
+}
+
+class IncomeHandler {
+    +handle(request : Request) : boolean
+}
+
+class CreditHistoryHandler {
+    +handle(request : Request) : boolean
+}
+
+class CollateralHandler {
+    +handle(request : Request) : boolean
+}
+
+class Request {
+    -creditAvailable : boolean
+    -monthlyIncome : double
+    -loanAmount : double
+    -hasCreditIssues : boolean
+    -hasCollateral : boolean
+}
+
+class BankLoanApplication {
+    
+}
+
+BankLoanApplication -> Request : request
+Handler <|.. AbstractHandler
+AbstractHandler <|-- CreditAvailabilityHandler
+AbstractHandler <|-- IncomeHandler
+AbstractHandler <|-- CreditHistoryHandler
+AbstractHandler <|-- CollateralHandler
+
+@enduml

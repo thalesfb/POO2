@@ -1,49 +1,63 @@
 @startuml bank-loan-approval
 
-interface Handler {
-    +setNext(handler : Handler) : Handler
-    +handle(request : Request) : boolean
+package interfaces {
+    interface Handler {
+        +setNext(handler : Handler) : Handler
+        +handle(request : Request) : boolean
+    }
 }
 
-class AbstractHandler {
-    -nextHandler : Handler
-    +setNext(handler : Handler) : Handler
-    +handle(request : Request) : boolean
+package handler {
+    abstract class AbstractHandler {
+        -nextHandler : Handler
+        +setNext(handler : Handler) : Handler
+        +handle(request : Request) : boolean
+    }
+
+    class CreditAvailabilityHandler {
+        +handle(request : Request) : boolean
+    }
+
+    class IncomeHandler {
+        +handle(request : Request) : boolean
+    }
+
+    class CreditHistoryHandler {
+        +handle(request : Request) : boolean
+    }
+
+    class CollateralHandler {
+        +handle(request : Request) : boolean
+    }
 }
 
-class CreditAvailabilityHandler {
-    +handle(request : Request) : boolean
+package request {
+    class Request {
+        -creditAvailable : boolean
+        -monthlyIncome : double
+        -loanAmount : double
+        -hasCreditIssues : boolean
+        -hasCollateral : boolean
+    }
 }
 
-class IncomeHandler {
-    +handle(request : Request) : boolean
+package bank {
+    class BankLoanApplication {
+    }
+
+    class BuildChainBank {
+        +buildChain() : Handler
+    }
 }
 
-class CreditHistoryHandler {
-    +handle(request : Request) : boolean
-}
-
-class CollateralHandler {
-    +handle(request : Request) : boolean
-}
-
-class Request {
-    -creditAvailable : boolean
-    -monthlyIncome : double
-    -loanAmount : double
-    -hasCreditIssues : boolean
-    -hasCollateral : boolean
-}
-
-class BankLoanApplication {
-    
-}
-
-BankLoanApplication -> Request : request
+BankLoanApplication -> AbstractHandler : handler
 Handler <|.. AbstractHandler
+BankLoanApplication -> Request : request
 AbstractHandler <|-- CreditAvailabilityHandler
 AbstractHandler <|-- IncomeHandler
 AbstractHandler <|-- CreditHistoryHandler
 AbstractHandler <|-- CollateralHandler
+BankLoanApplication -> BuildChainBank : uses
+BuildChainBank -> Handler : buildChain()
 
 @enduml

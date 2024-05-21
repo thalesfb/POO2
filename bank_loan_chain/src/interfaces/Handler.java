@@ -1,9 +1,8 @@
 package interfaces;
 
-import handler.Request;
+import request.Request;
 
 public interface Handler {
-  Handler setNext(Handler handler);
-
+  void setNext(Handler nextHandler);
   boolean handle(Request request);
 }

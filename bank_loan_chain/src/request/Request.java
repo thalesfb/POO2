@@ -1,4 +1,4 @@
-package handler;
+package request;
 
 public class Request {
   private boolean creditAvailable;

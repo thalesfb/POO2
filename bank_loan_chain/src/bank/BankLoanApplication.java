@@ -1,19 +1,19 @@
 package bank;
 
-import handler.AbstractHandler;
-import handler.Request;
+import interfaces.Handler;
+import request.Request;
 
 public class BankLoanApplication {
-  public static void main(String[] args) {
-    Handler handler = AbstractHandler.buildChain(); // Obtenha a cadeia de handlers configurada
-    Request request = new Request(5000, 30000, true, true);
+    public static void main(String[] args) {
+        Handler handler = BuildChainBank.buildChain();
 
-    // Processar a requisição através da cadeia de handlers
-    boolean result = handler.handle(request);
-    if (result) {
-      System.out.println("Empréstimo aprovado.");
-    } else {
-      System.out.println("Empréstimo negado.");
+        Request request = new Request(5000, 50000, true, true);
+        // Configurar o objeto Request com os detalhes necessários
+
+        if (handler.handle(request)) {
+            System.out.println("Empréstimo aprovado!");
+        } else {
+            System.out.println("Empréstimo negado!");
+        }
     }
-  }
 }

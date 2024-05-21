@@ -1,14 +1,20 @@
 package handler;
 
-import handler.AbstractHandler;
+import request.Request;
+import interfaces.Handler;
 
 public class CreditHistoryHandler extends AbstractHandler {
-  @Override
-  public boolean handle(Request request) {
-    if (request.hasCreditIssues()) {
-      System.out.println("Histórico de crédito limpo.");
-      return super.handle(request);
+    @Override
+    public boolean handle(Request request) {
+        if (isCreditHistoryClear(request)) {
+            return super.handle(request);
+        } else {
+            return false; // Histórico de crédito com problemas
+        }
     }
-    return false;
-  }
+
+    private boolean isCreditHistoryClear(Request request) {
+        // Implementação da verificação de histórico de crédito
+        return true;
+    }
 }

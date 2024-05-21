@@ -1,14 +1,20 @@
 package handler;
 
-import handler.AbstractHandler;
+import request.Request;
+import interfaces.Handler;
 
 public class IncomeHandler extends AbstractHandler {
-  @Override
-  public boolean handle(Request request) {
-    if (request.getMonthlyIncome() * 0.25 >= request.getLoanAmount()) {
-      System.out.println("Compatibilidade de renda verificada.");
-      return super.handle(request);
+    @Override
+    public boolean handle(Request request) {
+        if (isIncomeSufficient(request)) {
+            return super.handle(request);
+        } else {
+            return false; // Renda insuficiente
+        }
     }
-    return false;
-  }
+
+    private boolean isIncomeSufficient(Request request) {
+        // Implementação da verificação de renda
+        return true;
+    }
 }
